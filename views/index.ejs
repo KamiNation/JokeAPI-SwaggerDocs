@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css" type="text/css">
+    <title>JOKE API | Swagger DOcs</title>
+</head>
+
+<body>
+    <div class="flex flex-col md:flex ">
+
+        <h1 class="text-white font-bold text-lg bg-sky-800 p-5 text-center">
+            Here Is A Public API To Deliver Joy To The World With Random Number Generated!
+            <span class="text-black"><a href="http://localhost:5841/jokeapi/docs">Swagger DOcs</a></span>
+        </h1>
+
+
+
+
+
+        <div class="font-bold bg-sky-800 p-5 m-10 text-white text-center">
+            <p>
+                <%= joker %>
+            </p>
+        </div> <br>
+
+
+
+        <!-- Random joke button -->
+        <form method="post" class="m-5 divid-y-2" enctype="application/x-www-form-urlencoded">
+
+            <div class="flex 
+                justify-around 
+                items-center 
+                text-black 
+                font-bold bg-sky-800 
+                p-8 m-5 
+                xl:flex xl:flex-col
+                lg:flex lg:flex-col 
+                md:flex md:flex-col sm:flex 
+                sm:flex-col">
+                <div class="mb-5">
+                    <label for="id" class="pr-2">Put an ID:</label>
+                    <input type="text" name="id" id="id" placeholder="Put an Id from 1-100"
+                        class="rounded-lg border-solid border-yellow-500 bg-white p-2">
+                </div>
+
+
+                <div class="mb-5">
+                    <label for="textx" class="pr-2">Put a Text:</label>
+                    <input type="text" name="textx" id="textx" placeholder="Create joke text"
+                        class="rounded-lg border-solid border-yellow-500 bg-white p-2">
+                </div>
+
+
+                <div>
+                    <label for="type" class="pr-2">Put a Text:</label>
+                    <input type="text" name="type" id="type" placeholder="Create joke type"
+                        class="rounded-lg border-solid border-yellow-500 bg-white p-2">
+                </div>
+            </div>
+
+            <div class="text-black font-bold  bg-sky-800 p-5 m-5">
+                <p>Jokes by ID:
+                    <% if (locals.testRand) { %>
+                        <span class="text-red-500 font-bold m-5">
+                            <%= testRand %>
+                        </span>
+                        <% } %>
+                </p>
+                <p>Filters:
+                    <span class="text-white">Science</span>
+                    <span class="text-white">Wordplay</span>
+                    <span class="text-white">Puns</span>
+                    <span class="text-white"> Foods</span>
+                    <span class="text-white">Sports</span>
+                </p>
+                <p>Create new joke: <span class="text-white">Joke text</span> and <span class="text-white">Joke
+                        type</span></p>
+                <p>Edit existing joke: <span class="text-white">Id, </span> <span class="text-white">Joke text</span>
+                    and
+                    <span class="text-white">Joke type</span>
+                </p>
+                <p>Below are the available route we have: </p>
+            </div>
+
+
+
+            <div
+                class="flex  items-center gap-4 justify-center  xl:flex xl:flex-wrap lg:flex lg:flex-wrap md:flex md:flex-wrap sm:flex sm:flex-wrap bg-sky-800 p-8 m-5">
+
+                <!-- Filter Joke -->
+                <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    value="FILTER" formaction="/jokeapi/filter">
+                <input type="hidden" name="_method" value="GET">
+
+
+                <!-- Specific Joke by ID -->
+                <input id="jokesbyid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    type="submit" value="JOKES BY ID" formaction="/jokeapi/jokes">
+
+
+                <!-- Random Joke -->
+                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit"
+                    value="RANDOM JOKE" formaction="/jokeapi/random">
+
+                <!-- Add New Joke -->
+                <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    value="CREATE NEW JOKE" id="newjoke" formaction="/jokeapi/newJoke">
+
+
+
+                <!-- Edit an exisitng Joke -->
+                <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    value="EDIT EXISTING JOKES" formaction="/jokeapi/putJoke/">
+
+
+
+                <!-- Delete an exisitng Joke -->
+                <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    value="DELETE EXISTING JOKES" formaction="/jokeapi/deleteJoke">
+            </div>
+
+
+        </form>
+
+</body>
+
+
+</html>
